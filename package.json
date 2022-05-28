@@ -1,11 +1,11 @@
 {
-  "name": "cond-chain",
+  "name": "predict",
   "version": "0.0.0",
   "description": "",
   "keywords": [],
-  "main": "dist/cond-chain.umd.js",
-  "module": "dist/cond-chain.es5.js",
-  "typings": "dist/types/cond-chain.d.ts",
+  "main": "dist/predict.umd.js",
+  "module": "dist/predict.es5.js",
+  "typings": "dist/types/predict.d.ts",
   "files": [
     "dist"
   ],

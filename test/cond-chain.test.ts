@@ -1,4 +1,4 @@
-import DummyClass from "../src/cond-chain"
+import DummyClass from "../src/predict"
 
 /**
  * Dummy test
