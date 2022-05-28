@@ -28,7 +28,7 @@ export type URIS4 = keyof URItoKind4<any, any, any, any>
 //   )) => ConditionablePipe<T>
 // }
 
-export type ConditionableConstructorLike = new <T>(executor: (resolve: (value: T | ConditionableLike<T>) => void, reject: (reason?: any) => void) => void) => ConditionableLike<T>;
+// export type ConditionableConstructorLike = new <T>(executor: (resolve: (value: T | ConditionableLike<T>) => void, reject: (reason?: any) => void) => void) => ConditionableLike<T>;
 
 
 // export interface ConditionablePipe<T> {
@@ -41,29 +41,29 @@ export type ConditionableConstructorLike = new <T>(executor: (resolve: (value: T
 
 type Statements<T, A> = (value: T, executor: A) => T | A
 
-interface ConditionableLike<T> {
-   next<TResult1 = T, TResult2 = never>(
-    If?: (
-      //  (value: T) => TResult1 | ConditionableLike<TResult1>
-      Statements<TResult1, ConditionableLike<TResult1>>
-    ) | undefined | null,
+// interface ConditionableLike<T> {
+//    next<TResult1 = T, TResult2 = never>(
+//     If?: (
+//       //  (value: T) => TResult1 | ConditionableLike<TResult1>
+//       Statements<TResult1, ConditionableLike<TResult1>>
+//     ) | undefined | null,
 
-    Else?: (
-      // (reason: any) => TResult2 | ConditionableLike<TResult2>
-      Statements<TResult1, ConditionableLike<TResult1>>
-    ) | undefined | null
+//     Else?: (
+//       // (reason: any) => TResult2 | ConditionableLike<TResult2>
+//       Statements<TResult1, ConditionableLike<TResult1>>
+//     ) | undefined | null
 
-  ): ConditionableLike<TResult1 | TResult2>;
-}
+//   ): ConditionableLike<TResult1 | TResult2>;
+// }
 
 
 
-export interface ConditionablePipe<T> {
-  next<TResult1 = T, TResult2 = never>(
-    executor?: (
-      (
-        If: Statements<TResult1, ConditionableLike<TResult1>>,
-        Else: Statements<TResult1, ConditionableLike<TResult1>>
-      ) => TResult1 | ConditionableLike<TResult1>) | undefined | null
-    ): ConditionablePipe<TResult1 | TResult2>;
-}
+// export interface ConditionablePipe<T> {
+//   next<TResult1 = T, TResult2 = never>(
+//     executor?: (
+//       (
+//         If: Statements<TResult1, ConditionableLike<TResult1>>,
+//         Else: Statements<TResult1, ConditionableLike<TResult1>>
+//       ) => TResult1 | ConditionableLike<TResult1>) | undefined | null
+//     ): ConditionablePipe<TResult1 | TResult2>;
+// }
