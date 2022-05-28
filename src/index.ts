@@ -4,7 +4,7 @@ import {
   StatementFunction,
   ReturnOfStatement,
   StatementCollection,
-  OverrideStatementFunction
+  OverrideFunctionStatement
 } from './types/types'
 
 export {
@@ -12,7 +12,7 @@ export {
   StatementFunction,
   ReturnOfStatement,
   StatementCollection,
-  OverrideStatementFunction
+  OverrideFunctionStatement as OverrideStatementFunction
 }
 
 const { predict } = new Predict()

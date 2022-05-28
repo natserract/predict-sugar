@@ -46,7 +46,7 @@ export type ReturnOfStatement = {
   ) => StatementCollection<T, ReturnOfStatement>,
 }
 
-export type OverrideStatementFunction<T> =
+export type OverrideFunctionStatement<T> =
   StatementFunction<T, ReturnOfStatement>
 
 

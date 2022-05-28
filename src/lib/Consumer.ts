@@ -1,7 +1,7 @@
 import {
   AnyReturn,
   Narrowable,
-  OverrideStatementFunction,
+  OverrideFunctionStatement,
   ReturnOfStatement,
   StatementArg,
   StatementCollection
@@ -28,7 +28,7 @@ class Consumer<T extends Narrowable> {
     const { destination } = this
 
     if (destination.if) {
-      const ifFn = destination.if as OverrideStatementFunction<T>
+      const ifFn = destination.if as OverrideFunctionStatement<T>
 
       return ifFn(executor)
     }
@@ -40,7 +40,7 @@ class Consumer<T extends Narrowable> {
     const { destination } = this
 
     if (destination.else) {
-      const elseFn = destination.else as OverrideStatementFunction<T>
+      const elseFn = destination.else as OverrideFunctionStatement<T>
 
       return elseFn(executor)
     }
