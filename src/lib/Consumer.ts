@@ -4,7 +4,7 @@ import {
   OverrideFunctionStatement,
   ReturnOfStatement,
   StatementArg,
-  StatementCollection
+  StatementCollection,
 } from "../types/types";
 import { bind } from "../utils/common";
 

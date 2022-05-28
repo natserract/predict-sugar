@@ -1,4 +1,4 @@
-const { predict } = require('../dist/lib')
+const { predict, predictAnd, predictOr } = require('../dist/lib')
 
 // :: Default way
 //
@@ -10,7 +10,6 @@ predict(true).exec({
     console.log(false)
   }
 })
-
 
 // :: Nested way
 //
@@ -30,5 +29,58 @@ predict(text.length > 3).exec({
         })
       }
     })
+  }
+})
+
+// AND operation
+predictAnd([
+  true,
+  true,
+  true
+]).exec({
+  if(thenIfAnd) {
+    thenIfAnd([
+      true,
+      true,
+      false
+    ]).exec({
+      if() {
+        console.log("true top")
+      },
+      else() {
+        console.log("false top")
+      }
+    })
+    console.log(true)
+  },
+  else() {
+    console.log(false)
+  }
+})
+
+
+// OR operation
+predictOr([
+  true,
+  false,
+  false
+]).exec({
+  if(thenIfOr) {
+    thenIfOr([
+      true,
+      false,
+      false
+    ]).exec({
+      if() {
+        console.log("true top")
+      },
+      else() {
+        console.log("false top")
+      }
+    })
+    console.log(true)
+  },
+  else() {
+    console.log(false)
   }
 })

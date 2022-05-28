@@ -30,7 +30,7 @@ export type URIS3 = keyof URItoKind3<any, any, any>
 export type URIS4 = keyof URItoKind4<any, any, any, any>
 
 
-export type StatementArg<A> = (value: boolean) => A
+export type StatementArg<A> = (value: boolean | boolean[]) => A
 export type StatementFunction<A, B> =
   ((executor: StatementArg<B>) => A | B | undefined
 )
@@ -51,5 +51,7 @@ export type OverrideFunctionStatement<T> =
 
 
 export interface Implementor {
-  predict: (value: boolean) => ReturnOfStatement
+  predict: (value: boolean) => ReturnOfStatement;
+  predictAnd: (args: boolean[]) => ReturnOfStatement;
+  predictOr: (args: boolean[]) => ReturnOfStatement;
 }

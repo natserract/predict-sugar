@@ -15,7 +15,9 @@ export {
   OverrideFunctionStatement as OverrideStatementFunction
 }
 
-const { predict } = new Predict()
+const { predict, predictAnd, predictOr } = new Predict()
 export {
-  predict
+  predict,
+  predictAnd,
+  predictOr
 }
