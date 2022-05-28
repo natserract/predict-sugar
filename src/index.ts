@@ -15,4 +15,7 @@ export {
   OverrideStatementFunction
 }
 
-export default new Predict
+const { predict } = new Predict()
+export {
+  predict
+}
