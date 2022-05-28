@@ -4,7 +4,7 @@ import { Implementor, ReturnOfStatement, Narrowable, StatementCollection } from 
 class Predict implements Implementor {
   predict(value: boolean): ReturnOfStatement {
     return {
-      execute: function<T extends Narrowable>(statement: StatementCollection<T, ReturnOfStatement>) {
+      exec: function<T extends Narrowable>(statement: StatementCollection<T, ReturnOfStatement>) {
         const self = new Predict()
         const newStatement = new Consumer(statement)
 

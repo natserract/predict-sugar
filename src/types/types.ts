@@ -41,7 +41,7 @@ export type StatementCollection<A, F> = {
 }
 
 export type ReturnOfStatement = {
-  execute: <T extends Narrowable>(
+  exec: <T extends Narrowable>(
     statement: StatementCollection<T, ReturnOfStatement>
   ) => StatementCollection<T, ReturnOfStatement>,
 }
