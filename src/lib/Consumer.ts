@@ -29,10 +29,8 @@ class Consumer<T extends Narrowable> {
 
     if (destination.if) {
       const ifFn = destination.if as OverrideFunctionStatement<T>
-
       return ifFn(executor)
     }
-
     return
   }
 
@@ -41,10 +39,8 @@ class Consumer<T extends Narrowable> {
 
     if (destination.else) {
       const elseFn = destination.else as OverrideFunctionStatement<T>
-
       return elseFn(executor)
     }
-
     return
   }
 }

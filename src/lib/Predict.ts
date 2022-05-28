@@ -1,9 +1,15 @@
 import Consumer from "./Consumer"
-import { Implementor, ReturnOfStatement, Narrowable, StatementCollection, StatementFunction, StatementArg } from "../types/types"
+import {
+  Narrowable,
+  Implementor,
+  StatementArg,
+  ReturnOfStatement,
+  StatementCollection,
+} from "../types/types"
 import { predictAndFromArray, predictOrFromArray } from "../utils/common"
 
 class Predict implements Implementor {
-  init(
+  private init(
     value: boolean,
     depend: StatementArg<ReturnOfStatement>
   ): ReturnOfStatement {
@@ -20,9 +26,20 @@ class Predict implements Implementor {
   }
 
   /**
-   * predict()
+   * Predict single value `{true, false}`,
+   * @method predictAnd
    *
-   * predict single value `{true, false}`,
+   * @returns {Object} the object includes if, and else statements
+   *
+   * @example
+   *  predict(true).exec({
+   *    if() {
+   *      console.log(true) // output
+   *    },
+   *    else() {
+   *      console.log(false)
+   *    }
+   * })
    */
   predict(value: boolean): ReturnOfStatement {
     const self = new Predict()
@@ -34,11 +51,28 @@ class Predict implements Implementor {
   };
 
  /**
-  * predictAnd()
+  *
+  * Used to stitch together boolean values into a AND operation.
+  * @method predictAnd
   *
   * Laws: `A Λ B = ¬(A -> ¬B)`
   *
-  *  `A Λ B` is true if and only if A is true and B is true.
+  * `A Λ B` is true if and only if A is true and B is true.
+  *
+  * @example
+  * predictAnd([
+  *   true,
+  *   true,
+  *   true
+  * ]).exec({
+  *   if() {
+  *     console.log(true) // output
+  *   },
+  *   else() {
+  *     console.log(false)
+  *   },
+  * })
+  *
   */
   predictAnd(args: boolean[]): ReturnOfStatement {
     const self = new Predict()
@@ -51,11 +85,26 @@ class Predict implements Implementor {
   }
 
   /**
-   * predictOr()
+   * Used to stitch together boolean values into a OR operation.
+   * @method predictOr
    *
    * Laws: `A V B = ¬A -> B`
    *
    * `A V B` returns the truth value "true" unless both/includes of its arguments are "false"
+   *
+   * @example
+   * predictOr([
+   *   false,
+   *   false,
+   *   false
+   * ]).exec({
+   *   if() {
+   *     console.log(true)
+   *   },
+   *   else() {
+   *     console.log(false) // output
+   *   },
+   * })
    */
   predictOr(args: boolean[]): ReturnOfStatement {
     const self = new Predict()
