@@ -40,12 +40,3 @@ export type ReturnOfStatement = {
 }
 
 export type OverrideFunctionStatement<T> = StatementFunction<T, ReturnOfStatement>
-
-export interface Implementor {
-  predict: (value: boolean) => ReturnOfStatement
-  predictAnd: (values: boolean[]) => ReturnOfStatement
-  predictOr: (values: boolean[]) => ReturnOfStatement
-  returnOf: <T>(
-    value: StatementCollection<T, ReturnOfStatement>
-  ) => ReturnOfStatement | T | StatementFunction<T, ReturnOfStatement> | undefined
-}

@@ -1,12 +1,21 @@
 import {
-  Implementor,
   Narrowable,
   ReturnOfStatement,
   StatementArg,
-  StatementCollection
+  StatementFunction,
+  StatementCollection,
 } from '../types/types'
 import { predictAndFromArray, predictOrFromArray } from '../utils/common'
 import Consumer from './consumer'
+
+interface Implementor {
+  predict: (value: boolean) => ReturnOfStatement
+  predictAnd: (values: boolean[]) => ReturnOfStatement
+  predictOr: (values: boolean[]) => ReturnOfStatement
+  returnOf: <T>(
+    value: StatementCollection<T, ReturnOfStatement>
+  ) => ReturnOfStatement | T | StatementFunction<T, ReturnOfStatement> | undefined
+}
 
 class Predict implements Implementor {
   /**
