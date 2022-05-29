@@ -4,18 +4,18 @@ import {
   OverrideFunctionStatement,
   ReturnOfStatement,
   StatementArg,
-  StatementCollection,
-} from "../types/types";
-import { bind } from "../utils/common";
+  StatementCollection
+} from '../types/types'
+import { bind } from '../utils/common'
 
 class Consumer<T extends Narrowable> {
-  protected destination: StatementCollection<T, ReturnOfStatement>;
+  protected destination: StatementCollection<T, ReturnOfStatement>
 
   constructor(private statement: Partial<StatementCollection<T, ReturnOfStatement>>) {
-    let partialCondition: StatementCollection<T, ReturnOfStatement>;
-    let context: AnyReturn;
+    let partialCondition: StatementCollection<T, ReturnOfStatement>
+    let context: AnyReturn
 
-    context = Object.create(statement);
+    context = Object.create(statement)
     partialCondition = {
       if: statement.if && bind<AnyReturn>(statement.if, context),
       else: statement.else && bind<AnyReturn>(statement.else, context)
@@ -44,6 +44,5 @@ class Consumer<T extends Narrowable> {
     return
   }
 }
-
 
 export default Consumer

@@ -1,10 +1,10 @@
-import Predict from "./lib/Predict"
+import Predict from './lib/predict'
 import {
-  StatementArg,
-  StatementFunction,
+  OverrideFunctionStatement,
   ReturnOfStatement,
+  StatementArg,
   StatementCollection,
-  OverrideFunctionStatement
+  StatementFunction
 } from './types/types'
 
 export {
@@ -16,8 +16,4 @@ export {
 }
 
 const { predict, predictAnd, predictOr } = new Predict()
-export {
-  predict,
-  predictAnd,
-  predictOr
-}
+export { predict, predictAnd, predictOr }
