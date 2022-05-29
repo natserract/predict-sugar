@@ -1,8 +1,8 @@
 {
   "name": "predict-js",
-  "version": "0.0.0",
-  "description": "",
-  "keywords": [],
+  "version": "1.0.1",
+  "description": "Syntactic sugar for if, else statements by a function. Aim for an implementation both clean and elegant.",
+  "keywords": ["predict-js", "syntatic-sugar", "if-else"],
   "main": "dist/predict.umd.js",
   "module": "dist/predict.es5.js",
   "typings": "dist/types/predict.d.ts",
