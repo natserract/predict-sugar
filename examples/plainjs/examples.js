@@ -1,4 +1,4 @@
-const { predict, predictAnd, predictOr } = require('../dist/lib')
+const { predict, predictAnd, predictOr } = require('../../dist/lib')
 
 // :: Basic
 //

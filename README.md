@@ -17,7 +17,7 @@ To use **predict**, just drop a single line into your app:
 ```sh
 import { predict } from 'predict-js'
 ```
-See more [real example](/examples/).
+See more [real example](https://github.com/natserract/predict-js/tree/master/examples).
 
 Download the latest **predict** from GitHub, or install with npm:
 
@@ -114,4 +114,4 @@ predictOr([
 ```
 
 ## License
-This program is free software; it is distributed under an [MIT License](/LICENSE).
+This program is free software; it is distributed under an [MIT License](https://github.com/natserract/predict-js/blob/master/LICENSE).
