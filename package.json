@@ -1,6 +1,6 @@
 {
   "name": "predict-sugar",
-  "version": "0.1.1",
+  "version": "0.1.4",
   "description": "Syntactic sugar for if, else statements by a function. Aim for an implementation both clean and elegant.",
   "keywords": [
     "predict-sugar",
@@ -11,11 +11,8 @@
   "module": "./esm5/index.js",
   "es2015": "./esm2015/index.js",
   "typings": "./types/index.d.ts",
-  "files": [
-    "dist"
-  ],
-  "sideEffects": false,
   "author": "natserract <benjaminstwo@gmail.com>",
+  "sideEffects": false,
   "repository": {
     "type": "git",
     "url": "https://github.com/natserract/predict-sugar"
