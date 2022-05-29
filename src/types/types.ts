@@ -52,6 +52,9 @@ export type OverrideFunctionStatement<T> =
 
 export interface Implementor {
   predict: (value: boolean) => ReturnOfStatement;
-  predictAnd: (args: boolean[]) => ReturnOfStatement;
-  predictOr: (args: boolean[]) => ReturnOfStatement;
+  predictAnd: (values: boolean[]) => ReturnOfStatement;
+  predictOr: (values: boolean[]) => ReturnOfStatement;
+  returnOf: <T>(
+    value: StatementCollection<T, ReturnOfStatement>
+  ) => ReturnOfStatement | T | StatementFunction<T, ReturnOfStatement> | undefined
 }

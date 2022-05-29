@@ -5,6 +5,7 @@ import {
   StatementArg,
   ReturnOfStatement,
   StatementCollection,
+  StatementFunction,
 } from "../types/types"
 import { predictAndFromArray, predictOrFromArray } from "../utils/common"
 
@@ -55,9 +56,10 @@ class Predict implements Implementor {
   * Used to stitch together boolean values into a AND operation.
   * @method predictAnd
   *
-  * Laws: `A Λ B = ¬(A -> ¬B)`
-  *
+  * Laws: `A Λ B = ¬(A -> ¬B)`:
   * `A Λ B` is true if and only if A is true and B is true.
+  *
+  * @returns {Object} the object includes if, and else statements
   *
   * @example
   * predictAnd([
@@ -88,9 +90,10 @@ class Predict implements Implementor {
    * Used to stitch together boolean values into a OR operation.
    * @method predictOr
    *
-   * Laws: `A V B = ¬A -> B`
-   *
+   * Laws: `A V B = ¬A -> B`:
    * `A V B` returns the truth value "true" unless both/includes of its arguments are "false"
+   *
+   * @returns {Object} the object includes if, and else statements
    *
    * @example
    * predictOr([
@@ -115,6 +118,23 @@ class Predict implements Implementor {
       self.predictOr as StatementArg<ReturnOfStatement>
     )
   };
+
+  /**
+   * Method for return of predict function, which return is T | undefined
+   * This way, suitable if you need call by value strategy
+   * @method returnOf
+   *
+   * @param value
+   * @returns {T}
+   */
+  returnOf<T>(
+    value: StatementCollection<T, ReturnOfStatement>
+  ): ReturnOfStatement | T | StatementFunction<T, ReturnOfStatement> | undefined {
+    if (value) {
+      return Object.values(value).find(v => v)
+    }
+    return value
+  }
 }
 
 export default Predict
