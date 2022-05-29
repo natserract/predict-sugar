@@ -1,9 +1,9 @@
 {
-  "name": "predict-js",
-  "version": "1.0.4",
+  "name": "predict-sugar",
+  "version": "0.1.1",
   "description": "Syntactic sugar for if, else statements by a function. Aim for an implementation both clean and elegant.",
   "keywords": [
-    "predict-js",
+    "predict-sugar",
     "syntatic-sugar",
     "if-else"
   ],
@@ -14,10 +14,11 @@
   "files": [
     "dist"
   ],
+  "sideEffects": false,
   "author": "natserract <benjaminstwo@gmail.com>",
   "repository": {
     "type": "git",
-    "url": ""
+    "url": "https://github.com/natserract/predict-sugar"
   },
   "license": "MIT",
   "engines": {

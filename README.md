@@ -1,4 +1,4 @@
-# Predict-js
+# Predict Sugar
 
 Syntactic sugar for `if`, `else` **statements** by a **function**. Aim for an implementation both clean and elegant.
 
@@ -16,15 +16,15 @@ Syntactic sugar for `if`, `else` **statements** by a **function**. Aim for an im
 To use **predict**, just drop a single line into your app:
 
 ```sh
-import { predict } from 'predict-js'
+import { predict } from 'predict-sugar'
 ```
 
-See more [real example](https://github.com/natserract/predict-js/tree/master/examples).
+See more [real example](https://github.com/natserract/predict-sugar/tree/master/examples).
 
 Download the latest **predict** from GitHub, or install with npm:
 
 ```sh
-npm install predict-js
+npm install predict-sugar
 ```
 
 ### Basic
@@ -32,7 +32,7 @@ npm install predict-js
 Examples of basic statements
 
 ```ts
-import { predict } from 'predict-js'
+import { predict } from 'predict-sugar'
 
 function testNum(a: number) {
   let result
@@ -58,7 +58,7 @@ console.log(testNum(-5))
 You can also use an statement in predict inside a statement. This is known as nested `if else` statement.
 
 ```ts
-import { predict, returnOf } from 'predict-js'
+import { predict, returnOf } from 'predict-sugar'
 
 function isMaleGender(gender: string): string {
   return returnOf(
@@ -86,7 +86,7 @@ console.log(isMaleGender('male'))
 We can also write multiple conditions inside a single if statement with `predictAnd`
 
 ```ts
-import { predictAnd } from 'predict-js'
+import { predictAnd } from 'predict-sugar'
 
 const num = 10
 
@@ -101,7 +101,7 @@ predictAnd([num > 5, num < 50]).exec({
 ### `OR` operation
 
 ```ts
-import { predictOr } from 'predict-js'
+import { predictOr } from 'predict-sugar'
 
 const num = 10
 
@@ -115,4 +115,4 @@ predictOr([num > 5, num < 10]).exec({
 
 ## License
 
-This program is free software; it is distributed under an [MIT License](https://github.com/natserract/predict-js/blob/master/LICENSE).
+This program is free software; it is distributed under an [MIT License](https://github.com/natserract/predict-sugar/blob/master/LICENSE).
