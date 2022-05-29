@@ -131,7 +131,7 @@ class Predict implements Implementor {
     value: StatementCollection<T, ReturnOfStatement>
   ): T | undefined {
     if (value) {
-      return Object.values(value).find(v => v) as T
+      return Object.values(value).find(v => v !== undefined) as T
     }
     return value
   }

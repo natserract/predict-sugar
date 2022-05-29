@@ -1,6 +1,6 @@
 const { predict, predictAnd, predictOr } = require('../dist/lib')
 
-// :: Default way
+// :: Basic
 //
 predict(true).exec({
   if() {
@@ -11,7 +11,23 @@ predict(true).exec({
   }
 })
 
-// :: Nested way
+function testNum(a){
+  let result;
+
+  predict(a > 0).exec({
+    if() {
+      result = 'positive';
+    },
+    else() {
+      result = 'NOT positive';
+    }
+  })
+
+  return result;
+}
+console.log(testNum(-5));
+
+// :: Nested
 //
 const text = "hello world"
 

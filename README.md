@@ -1,106 +1,117 @@
-const _bind = Function.prototype.bind;
+# Predict-js
 
-function bind<Fn extends (...args: any[]) => any>(fn: Fn, thisArg: any): Fn {
-  return _bind.call(fn, thisArg);
+Syntactic sugar for `if`, `else` **statements** by a **function**. Aim for an implementation both clean and elegant.
+
+> "But it's worth to turn round the question: What is so special about if that it need a special syntax?" from [wiki haskell](https://wiki.haskell.org/Syntactic_sugar/Cons).
+
+
+## Advantages
+- Free of ambiguity and inconsistency
+- Consistency with type inference
+- Clean and elegant solution
+- Support nested statements
+
+## Usage
+To use **predict**, just drop a single line into your app:
+
+```sh
+import { predict } from 'predict-js'
+```
+See more [real example](/examples/).
+
+Download the latest **predict** from GitHub, or install with npm:
+
+```sh
+npm install predict-js
+```
+
+### Basic 
+Examples of basic statements
+```ts
+import { predict } from 'predict-js'
+
+function testNum(a: number){
+  let result;
+
+  predict(a > 0).exec({
+    if() {
+      result = 'positive';
+    },
+    else() {
+      result = 'NOT positive';
+    }
+  })
+
+  return result;
 }
 
-interface Next<T = any> {
-  if?: (value: T) => void;
-  elif?: (value: T, next: any) => void;
-  else?: (err: any) => void;
-  // complete: () => void;
-}
-class IfOrElse {
-  protected destination: Next<any>;
+console.log(testNum(-5));
+// expected output: "NOT positive"
+```
 
-  constructor(private next: Next) {
-    let partialNext: Next;
-    let context: any;
+### Nested Statement
+You can also use an statement in predict inside a statement. This is known as nested `if else` statement.
 
-    context = Object.create(next);
-    partialNext = {
-      if: next.if && bind(next.if, context),
-      elif: next.elif && bind(next.elif, context),
-      else: next.else && bind(next.else, context)
-    }
+```ts
+import { predict, returnOf } from 'predict-js'
 
-    this.destination = partialNext
-  }
-
-  if(value: any) {
-    const { destination } = this
-    if (destination.if) {
-      destination.if(value)
-    }
-  }
-
-  elif(value: any, next:any){
-    const { destination } = this
-    if (destination.elif) {
-      destination.elif(value, next)
-    }
-  }
-
-  else(value: any) {
-     const { destination } = this
-     if (destination.else) {
-       destination.else(value)
-     }
-  }
-}
-
-class Condition {
-  condition<T>(value: boolean) {
-    return {
-      executor: function(next: Next) {
-        const ifOrElse = new IfOrElse(next)
-
-        return {
-          if: Boolean(value) ? ifOrElse.if(ifOrElse) : ifOrElse.if,
-          elif: (val: any, next: any) => {
-            if (Boolean(val)) {
-              return ifOrElse.elif(val, ifOrElse)
-            }
-          },
-          else: !Boolean(value) ? ifOrElse.else(ifOrElse) : ifOrElse.else
-        }
-      }
-    }
-  }
-}
-
-const condition = (value: boolean) => {
-  return {
-    if: ((next: any) => {
-      if (value) {
-        next(condition)
-      }
-    }),
-    else: ((next: any) => {
-      if (!value) {
-        next(condition)
+function isMaleGender(gender: string): string {
+  return returnOf(
+    predict(gender == "male").exec<string>({
+      if() {
+        return "Laki-laki"
+      },
+      else() {
+        return "Wanita"
+        //
+        // return false -> If you pass this, will mismatched/ambiguous types, 
+        // because this exec only return string. You don't need write type annotation
+        // `exec<string>`, predict has automatically infer your return type.
       }
     })
-  }
+  )!
 }
 
-const text = "hello"
-const text2 = "worlds";
+console.log(isMaleGender("male"))
+// expected output: "Laki-laki"
+```
 
-// condition(text.length < 2).executor({
-//   if(next) {
-//     console.log(true)
-//   },
-//   else() {
-//     console.log(false)
-//   }
-// })
+### `AND` operation
+We can also write multiple conditions inside a single if statement with `predictAnd`
 
+```ts
+import { predictAnd } from 'predict-js'
 
-condition(text.length < 2)
-  .if(() => {
-    console.log(true)
-  })
-  .else(() => {
-    console.log(false)
-  })
+const num = 10
+
+// It's mean: num > 5 && num < 50
+predictAnd([
+  num > 5,
+  num < 50
+]).exec({
+  if() {
+    return "num is greater than 5 AND less than 50"
+  }
+})
+```
+
+### `OR` operation
+
+```ts
+import { predictOr } from 'predict-js'
+
+const num = 10
+
+// It's mean: num > 5 || num < 10
+predictOr([
+  num > 5,
+  num < 10
+]).exec({
+  if() {
+    return "num is either less than 10 or greater than 5, or both"
+  }
+})
+```
+
+## License
+This program is free software; it is distributed under an [MIT License](/LICENSE).
