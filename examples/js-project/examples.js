@@ -1,4 +1,4 @@
-const { predict, predictAnd, predictOr } = require('../../dist/lib')
+const { predict, predictAnd, predictOr } = require('../../dist/bundles/index.umd')
 
 // :: Basic
 //
@@ -11,34 +11,34 @@ predict(true).exec({
   }
 })
 
-function testNum(a){
-  let result;
+function testNum(a) {
+  let result
 
   predict(a > 0).exec({
     if() {
-      result = 'positive';
+      result = 'positive'
     },
     else() {
-      result = 'NOT positive';
+      result = 'NOT positive'
     }
   })
 
-  return result;
+  return result
 }
-console.log(testNum(-5));
+console.log(testNum(-5))
 
 // :: Nested
 //
-const text = "hello world"
+const text = 'hello world'
 
 predict(text.length > 3).exec({
-  if(thenIf){
+  if(thenIf) {
     thenIf(text.length < 5).exec({
       if() {
         console.log(true)
       },
       else(thenElse) {
-        thenElse(text.split('')[0] == "h").exec({
+        thenElse(text.split('')[0] == 'h').exec({
           if() {
             console.log(false)
           }
@@ -49,22 +49,14 @@ predict(text.length > 3).exec({
 })
 
 // AND operation
-predictAnd([
-  true,
-  true,
-  true
-]).exec({
+predictAnd([true, true, true]).exec({
   if(thenIfAnd) {
-    thenIfAnd([
-      true,
-      true,
-      false
-    ]).exec({
+    thenIfAnd([true, true, false]).exec({
       if() {
-        console.log("true top")
+        console.log('true top')
       },
       else() {
-        console.log("false top")
+        console.log('false top')
       }
     })
     console.log(true)
@@ -74,24 +66,15 @@ predictAnd([
   }
 })
 
-
 // OR operation
-predictOr([
-  true,
-  false,
-  false
-]).exec({
+predictOr([true, false, false]).exec({
   if(thenIfOr) {
-    thenIfOr([
-      true,
-      false,
-      false
-    ]).exec({
+    thenIfOr([true, false, false]).exec({
       if() {
-        console.log("true top")
+        console.log('true top')
       },
       else() {
-        console.log("false top")
+        console.log('false top')
       }
     })
     console.log(true)
