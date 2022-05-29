@@ -7,9 +7,10 @@
     "syntatic-sugar",
     "if-else"
   ],
-  "main": "dist/predict.umd.js",
-  "module": "dist/predict.es5.js",
-  "typings": "dist/types/predict.d.ts",
+  "main": "./bundles/index.umd.js",
+  "module": "./esm5/index.js",
+  "es2015": "./esm2015/index.js",
+  "typings": "./types/index.d.ts",
   "files": [
     "dist"
   ],
