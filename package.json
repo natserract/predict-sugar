@@ -1,6 +1,6 @@
 {
   "name": "predict-sugar",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "Syntactic sugar for if, else statements by a function. Aim for an implementation both clean and elegant.",
   "keywords": [
     "predict-sugar",

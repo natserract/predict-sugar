@@ -60,11 +60,20 @@ You can also use an statement in predict inside a statement. This is known as ne
 ```ts
 import { predict, returnOf } from 'predict-sugar'
 
-function isMaleGender(gender: string): string {
+function isMaleGender(gender: string, age: number): string {
   return returnOf(
     predict(gender == 'male').exec<string>({
-      if() {
-        return 'Laki-laki'
+      if(thenIf) {
+        return returnOf(
+          thenIf(age > 17).exec({
+            if() {
+              return 'Laki-laki 18+'
+            },
+            else() {
+              return 'Laki-laki'
+            }
+          })
+        )
       },
       else() {
         return 'Wanita'
@@ -77,8 +86,8 @@ function isMaleGender(gender: string): string {
   )!
 }
 
-console.log(isMaleGender('male'))
-// expected output: "Laki-laki"
+console.log(isMaleGender('male', 18))
+// expected output: "Laki-laki 18 +"
 ```
 
 ### `AND` operation

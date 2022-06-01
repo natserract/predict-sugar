@@ -2,8 +2,8 @@ import {
   Narrowable,
   ReturnOfStatement,
   StatementArg,
-  StatementFunction,
   StatementCollection,
+  StatementFunction
 } from '../types/types'
 import { predictAndFromArray, predictOrFromArray } from '../utils/common'
 import Consumer from './consumer'
